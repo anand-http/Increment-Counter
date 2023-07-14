@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Increment Counter</title>
+    <script src="https://kit.fontawesome.com/cbbd782726.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            background-color: rgb(255, 255, 255);
+            align-items: center;
+            justify-content: space-evenly;
+            height: 100vh;
+
+        }
+
+        .fa-solid {
+            font-size: 100px;
+        }
+
+        .box {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 70px;
+            color: #fbb22e;
+            margin-bottom: 0;
+        }
+
+        @media screen and (max-width:767px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .box {
+                margin-top: 30px;
+            }
+
+            .fa-solid {
+                font-size: 60px;
+            }
+            h1 {
+            font-size: 35px;
+        
+        }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <i class="fa-solid fa-mug-hot"></i>
+            <h1 class="counter" data-target="4000"></h1>
+            <h2>Project Completed</h2>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-users"></i>
+            <h1 class="counter" data-target="15000"></h1>
+
+            <h2>Our Happy Clients</h2>
+
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-tasks"></i>
+            <h1 class="counter" data-target="500"></h1>
+
+            <h2>Ongoing Projects</h2>
+
+        </div>
+    </div>
+
+
+
+    <script>
+        const counters = document.querySelectorAll('.counter')
+        counters.forEach((counter) => {
+
+            counter.innerHTML = 0
+
+
+            const updateCounter = () => {
+                const targetCount = +counter.getAttribute('data-target')
+                console.log(targetCount);
+                const startingCount = +counter.innerHTML;
+                const incr = targetCount / 100;
+
+                if (startingCount < targetCount) {
+                    counter.innerHTML = `${startingCount + incr}`
+                    setTimeout(updateCounter, 40);
+                }
+                else {
+                    counter.innerHTML = targetCount;
+                }
+            }
+
+            updateCounter();
+        })
+
+
+
+    </script>
+</body>
+
+</html>
